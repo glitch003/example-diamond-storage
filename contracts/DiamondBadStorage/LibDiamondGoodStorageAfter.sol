@@ -16,7 +16,7 @@ library LibDiamondGoodStorageAfter {
     }
 
     struct DiamondGoodStorage {
-        NestedStruct nestedStruct;
+        mapping(uint256 => NestedStruct) nestedStruct;
         uint256 outerValue1;
     }
 

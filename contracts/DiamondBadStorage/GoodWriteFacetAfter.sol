@@ -20,51 +20,51 @@ contract GoodWriteFacetAfter {
         s().outerValue1 = value;
     }
 
-    function getNestedValue1() external view returns (uint256) {
-        return s().nestedStruct.nestedValue1;
+    function getNestedValue1(uint256 index) external view returns (uint256) {
+        return s().nestedStruct[index].nestedValue1;
     }
 
-    function setNestedValue1(uint256 value) external {
-        s().nestedStruct.nestedValue1 = value;
+    function setNestedValue1(uint256 index, uint256 value) external {
+        s().nestedStruct[index].nestedValue1 = value;
     }
     
-    function getNestedValue2() external view returns (uint256) {
-        return s().nestedStruct.nestedValue2;
+    function getNestedValue2(uint256 index) external view returns (uint256) {
+        return s().nestedStruct[index].nestedValue2;
     }
 
-    function setNestedValue2(uint256 value) external {
-        s().nestedStruct.nestedValue2 = value;
+    function setNestedValue2(uint256 index, uint256 value) external {
+        s().nestedStruct[index].nestedValue2 = value;
     }
 
     function getNestedNestedValue1(uint256 index) external view returns (uint256) {
-        assert(index < s().nestedStruct.nestedNestedStructThatCanGrow.length);
-        return s().nestedStruct.nestedNestedStructThatCanGrow[index].nestedNestedValue1;
+        assert(index < s().nestedStruct[index].nestedNestedStructThatCanGrow.length);
+        return s().nestedStruct[index].nestedNestedStructThatCanGrow[index].nestedNestedValue1;
     }
 
     function setNestedNestedValue1(uint256 index, uint256 value) external {
-        if (index >= s().nestedStruct.nestedNestedStructThatCanGrow.length) {
-            s().nestedStruct.nestedNestedStructThatCanGrow.push(LibDiamondGoodStorageAfter.NestedNestedStructThatCanGrow({
+        if (index >= s().nestedStruct[index].nestedNestedStructThatCanGrow.length) {
+            s().nestedStruct[index].nestedNestedStructThatCanGrow.push(LibDiamondGoodStorageAfter.NestedNestedStructThatCanGrow({
                 nestedNestedValue1: 0,
                 nestedNestedValue2: value
             }));
         } else {
-            s().nestedStruct.nestedNestedStructThatCanGrow[index].nestedNestedValue1 = value;
+            s().nestedStruct[index].nestedNestedStructThatCanGrow[index].nestedNestedValue1 = value;
         }
     }
 
     function getNestedNestedValue2(uint256 index) external view returns (uint256) {
-        assert(index < s().nestedStruct.nestedNestedStructThatCanGrow.length);
-        return s().nestedStruct.nestedNestedStructThatCanGrow[index].nestedNestedValue2;
+        assert(index < s().nestedStruct[index].nestedNestedStructThatCanGrow.length);
+        return s().nestedStruct[index].nestedNestedStructThatCanGrow[index].nestedNestedValue2;
     }
 
     function setNestedNestedValue2(uint256 index, uint256 value) external {
-        if (index >= s().nestedStruct.nestedNestedStructThatCanGrow.length) {
-            s().nestedStruct.nestedNestedStructThatCanGrow.push(LibDiamondGoodStorageAfter.NestedNestedStructThatCanGrow({
+        if (index >= s().nestedStruct[index].nestedNestedStructThatCanGrow.length) {
+            s().nestedStruct[index].nestedNestedStructThatCanGrow.push(LibDiamondGoodStorageAfter.NestedNestedStructThatCanGrow({
                 nestedNestedValue1: 0,
                 nestedNestedValue2: value
             }));
         } else {
-            s().nestedStruct.nestedNestedStructThatCanGrow[index].nestedNestedValue2 = value;
+            s().nestedStruct[index].nestedNestedStructThatCanGrow[index].nestedNestedValue2 = value;
         }
     }
 }

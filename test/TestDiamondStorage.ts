@@ -172,8 +172,8 @@ describe("DiamondBadStorage", async function () {
     await goodWriteFacetBefore.setOuterValue1(1);
     assert.equal(await goodWriteFacetBefore.getOuterValue1(), 1n);
 
-    await goodWriteFacetBefore.setNestedValue2(2);
-    assert.equal(await goodWriteFacetBefore.getNestedValue2(), 2n);
+    await goodWriteFacetBefore.setNestedValue2(0, 2);
+    assert.equal(await goodWriteFacetBefore.getNestedValue2(0), 2n);
 
     // Now, cut a new facet and show that the new storage update is safe.
     // Deploy the GoodWriteFacetAfter contract
@@ -212,7 +212,7 @@ describe("DiamondBadStorage", async function () {
 
     // This is passing which is GREAT and what's expected.
     assert.equal(await goodWriteFacetAfter.getOuterValue1(), 1n);
-    assert.equal(await goodWriteFacetAfter.getNestedValue2(), 2n);
+    assert.equal(await goodWriteFacetAfter.getNestedValue2(0), 2n);
   });
 });
 
